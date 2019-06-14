@@ -1,0 +1,60 @@
+﻿
+@{
+    ViewBag.Title = "NoticePayment";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using NükEM.Repository;
+
+<div class="container">
+<div class="row">
+        <div class="sparkline8-list shadow-reset" style="width:600px; margin-left:30%; margin-top:130px">
+            <div class="sparkline8-hd">
+                <div class="main-sparkline8-hd">
+                    <h1>@ViewBag.viewFrom Tazminatı Sonuç Sayfası</h1>
+                    <div class="sparkline8-outline-icon">
+                        <span class="sparkline8-collapse-link"><i class="fa fa-chevron-up"></i></span>
+                        <span><i class="fa fa-wrench"></i></span>
+                        <span class="sparkline8-collapse-close"><i class="fa fa-times"></i></span>
+                    </div>
+                </div>
+            </div>
+            <div class="sparkline8-graph">
+                <div class="static-table-list">
+                    <table class="table">
+                        <thead>
+                        </thead>
+                        <tbody>
+                            @foreach (NoticePayment item in ViewBag.payment)
+                            {
+                                <tr>
+                                    <td>@item.thead1</td>
+                                    <td>@item.numberOfWorkDay</td>
+                                </tr>
+                                <tr>
+                                    <td>@item.thead2</td>
+                                    <td>@item.grossPayment</td>
+                                </tr>
+                                <tr>
+                                    <td>@item.thead3</td>
+                                    <td>@item.stampTax</td>
+                                </tr>
+                                if (ViewBag.viewFrom == "İhbar")
+                                {
+                                    <tr>
+                                        <td>@item.thead</td>
+                                        <td>@item.mit</td>
+                                    </tr>
+                                }
+                                <tr>
+                                    <td>@item.thead4</td>
+                                    <td>@item.netPayment</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,202 @@
+﻿
+@{
+    ViewBag.Title = "PersonnelAdd";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using NükEM.Entity.Entities;
+<div class="container">
+    <div class="row">
+        <div class="sparkline12-list shadow-reset mg-t-30 " style="width:600px; margin-left:30%; margin-top:130px">
+            <div class="sparkline12-hd">
+                <div class="main-sparkline12-hd">
+                    <h1>Personel Ekleme</h1>
+                </div>
+            </div>
+            <div class="sparkline12-graph">
+                <div class="basic-login-form-ad">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="all-form-element-inner">
+                                <form action="/Personnel/PersonnelAdd" method="post">
+
+                                    <div class="form-group-inner">
+                                        <div class="row">
+                                            <div class="col-lg-3">
+                                                <label class="login2 pull-right pull-right-pro">Personel Adı:</label>
+                                            </div>
+                                            <div class="col-lg-9">
+                                                <input type="text" class="form-control" placeholder="Personel adı giriniz" name="Name" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group-inner">
+                                        <div class="row">
+                                            <div class="col-lg-3">
+                                                <label class="login2 pull-right pull-right-pro">Personel Soyadı:</label>
+                                            </div>
+                                            <div class="col-lg-9">
+                                                <input type="text" class="form-control" placeholder="Personel soyadı giriniz" name="Surname" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group-inner">
+                                        <div class="row">
+                                            <div class="col-lg-3">
+                                                <label class="login2 pull-right pull-right-pro">Personel Departman:</label>
+                                            </div>
+                                            <div class="col-lg-9">
+                                                <input type="text" class="form-control" placeholder="Personel departmanı giriniz" name="Department" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group-inner">
+                                        <div class="row">
+                                            <div class="col-lg-3">
+                                                <label class="login2 pull-right pull-right-pro">İşe Giriş Tarihi</label>
+                                            </div>
+                                            <div class="input-group date">
+                                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                <input type="date" class="form-control" name="RecruitmentDate">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group-inner">
+                                        <div class="row">
+                                            <div class="col-lg-3">
+                                                <label class="login2 pull-right pull-right-pro">Çalıştığı süre</label>
+                                            </div>
+                                            <div class="col-lg-9">
+                                                <input type="number" class="form-control" name="TimeInTitle" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group-inner">
+                                        <div class="row">
+                                            <div class="col-lg-3">
+                                                <label class="login2 pull-right pull-right-pro">Unvan</label>
+                                            </div>
+                                            <div class="col-lg-9">
+                                                <div class="form-select-list">
+                                                    <select class="form-control custom-select-value" name="TitleId">
+                                                        <option>Unvan Seciniz</option>
+                                                        @foreach (Title item in ViewBag.TitleList)
+                                                        {
+                                                            <option value="@item.Id">@item.Descriptions</option>
+                                                        }
+
+
+
+
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group-inner">
+                                        <div class="row">
+                                            <div class="col-lg-3">
+                                                <label class="login2 pull-right pull-right-pro">Doğum Tarihi</label>
+                                            </div>
+                                            <div class="input-group date">
+                                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                <input type="date" class="form-control" name="Birthdate">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group-inner">
+                                        <div class="row">
+                                            <div class="col-lg-3">
+                                                <label class="login2 pull-right pull-right-pro">Engel Durumu</label>
+                                            </div>
+                                            <div class="col-lg-9">
+                                                <div class="form-select-list">
+                                                    <select class="form-control custom-select-value" name="Disability">
+                                                        <option>Yok</option>
+                                                        <option>1.Derece</option>
+                                                        <option>2.Derece</option>
+                                                        <option>3.Derece</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group-inner">
+                                        <div class="row">
+                                            <div class="col-lg-3">
+                                                <label class="login2 pull-right pull-right-pro">Medeni Durumu</label>
+                                            </div>
+                                            <div class="col-lg-9">
+                                                <div class="form-select-list">
+                                                    <select class="form-control custom-select-value" name="MaritalStatus">
+                                                        <option>Bekar</option>
+                                                        <option>Evli</option>
+
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group-inner">
+                                        <div class="row">
+                                            <div class="col-lg-3">
+                                                <label class="login2 pull-right pull-right-pro">Eş Çalışma Durumu</label>
+                                            </div>
+                                            <div class="col-lg-9">
+                                                <div class="form-select-list">
+                                                    <select class="form-control custom-select-value" name="WorkingStatusOfSpouse">
+                                                        <option>Çalışıyor</option>
+                                                        <option>Çalışmıyor</option>
+
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group-inner">
+                                        <div class="row">
+                                            <div class="col-lg-3">
+                                                <label class="login2 pull-right pull-right-pro">Çocuk sayısı</label>
+                                            </div>
+                                            <div class="col-lg-9">
+                                                <input type="number" class="form-control" name="NumberOfChildren" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group-inner">
+                                        <div class="login-btn-inner">
+                                            <div class="row">
+                                                <div class="col-lg-3"></div>
+                                                <div class="col-lg-9">
+
+                                                    <div class="login-horizental cancel-wp pull-left">
+
+                                                        <button class="btn btn-sm btn-primary login-submit-cs" type="submit">Kaydet</button>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                                <span id="error">@ViewBag.createMessage</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts
+    {
+    <style>
+        #hata {
+            color: red;
+            font-size: 16px;
+        }
+    </style>
+
+}
+
+

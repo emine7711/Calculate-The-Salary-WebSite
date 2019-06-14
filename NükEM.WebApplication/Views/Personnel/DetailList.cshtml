@@ -1,0 +1,56 @@
+﻿
+@{
+    ViewBag.Title = "DetailList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using NükEM.Entity;
+
+@model PersonnelDetail
+<div class="data-table-area mg-b-40">
+    <div class="container">
+        <div class="row">
+            <div class="sparkline13-list shadow-reset" style="margin-top:130px">
+                <div class="sparkline13-hd">
+                    <div class="main-sparkline13-hd">
+                        <h1>Personel Detay Tablosu</h1>
+                        <div class="sparkline13-outline-icon">
+                            <span class="sparkline13-collapse-link"><i class="fa fa-chevron-up"></i></span>
+
+                            <span class="sparkline13-collapse-close"><i class="fa fa-times"></i></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="sparkline13-graph">
+                    <div class="datatable-dashv1-list custom-datatable-overright">
+                        <table id="table" data-toggle="table" data-pagination="true" data-search="true" data-show-columns="true" data-show-pagination-switch="true" data-show-refresh="true" data-key-events="true" data-show-toggle="true" data-resizable="true" data-cookie="true" data-cookie-id-table="saveId" data-show-export="true" data-click-to-select="true" data-toolbar="#toolbar" class="table table-hover JColResizer">
+                            <thead>
+                                <tr>
+                                    <th style="width:3%;" data-field="state" data-checkbox="true"></th>
+                                    <th style="width: 8.5%;" data-field="name" tabindex="0"><div class="th-inner ">Doğum Tarihi</div><div class="fht-cell"></div></th>
+                                    <th style="width: 8.5%;" data-field="name" tabindex="0"><div class="th-inner ">Engel Durumu</div><div class="fht-cell"></div></th>
+                                    <th style="width: 8.5%;" data-field="name" tabindex="0"><div class="th-inner ">Medeni Durumu</div><div class="fht-cell"></div></th>
+                                    <th style="width: 8.5%;" data-field="name" tabindex="0"><div class="th-inner ">Eş Çalışma Durumu</div><div class="fht-cell"></div></th>
+                                    <th style="width: 8.5%;" data-field="name" tabindex="0"><div class="th-inner ">Çocuk Sayısı</div><div class="fht-cell"></div></th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                
+                                    <tr>
+                                        <td></td>
+                                        <td>@Model.Birthdate</td>
+                                        <td>@Model.Disability</td>
+                                        <td>@Model.MaritalStatus</td>
+                                        <td>@Model.WorkingStatusOfSpouse</td>
+                                        <td>@Model.NumberOfChildren</td>
+                                    </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

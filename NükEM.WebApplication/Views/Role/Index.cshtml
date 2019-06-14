@@ -1,0 +1,50 @@
+﻿
+@{
+    ViewBag.Title = "Roller";
+}
+@model List<string>
+
+<div class="container">
+<div class="row" >
+        <div class="sparkline13-list shadow-reset" style="margin-top:130px">
+            <div class="sparkline13-hd">
+                <div class="main-sparkline13-hd">
+                    <h1>Rol Listesi</h1>
+                    <div class="sparkline13-outline-icon">
+                        <span class="sparkline13-collapse-link"><i class="fa fa-chevron-up"></i></span>
+                        <span class="sparkline13-collapse-close"><i class="fa fa-times"></i></span>
+                        <a href="/Role/AddRole" class="btn btn-custon-rounded-two btn-warning btn-xs">Rol Ekle</a>
+                    </div>
+
+                </div>
+            </div>
+            <div class="sparkline13-graph">
+                <div class="datatable-dashv1-list custom-datatable-overright">
+                    <table id="table" data-toggle="table" data-pagination="true" data-search="true" data-show-columns="true" data-show-pagination-switch="true" data-show-refresh="true" data-key-events="true" data-show-toggle="true" data-resizable="true" data-cookie="true" data-cookie-id-table="saveId" data-show-export="true" data-click-to-select="true" data-toolbar="#toolbar" class="table table-hover JColResizer">
+                        <thead>
+                            <tr>
+
+                                <th style="width: 6%;" data-field="name" tabindex="0"><div class="th-inner "></div><div class="fht-cell"></div></th>
+                                <th style="width: 8%;" data-field="name" tabindex="0"><div class="th-inner ">Rol Adı</div><div class="fht-cell"></div></th>
+                                <th style="width: 6%;" data-field="name" tabindex="0"><div class="th-inner ">Sil</div><div class="fht-cell"></div></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (string role in Model)
+                            {
+
+                                <tr>
+                                    <td></td>
+                                    <td>@role</td>
+                                    <td><a href="#" class="btn btn-danger deleteUser" data-rolename="@role">Sil</a></td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

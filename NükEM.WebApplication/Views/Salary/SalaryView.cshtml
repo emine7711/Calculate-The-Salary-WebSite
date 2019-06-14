@@ -1,0 +1,282 @@
+﻿
+@{
+
+    ViewBag.Title = "BrüttenNete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+            <div class="sparkline12-list shadow-reset mg-t-30" style="width:600px; margin-left:30%; margin-top:130px">
+                <div class="sparkline12-hd">
+                    <div class="main-sparkline12-hd">
+                        <h1>@ViewBag.viewFrom Maaş Hesaplama</h1>
+                    </div>
+                </div>
+                <div class="sparkline12-graph">
+                    <div class="basic-login-form-ad">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="all-form-element-inner">
+                                    <form action="/Salary/SalaryResult" method="post">
+                                        @*Kullanıcı girişi yapılmışsa*@
+                                        @*@if (User.Identity.IsAuthenticated)
+                                        {
+                                        <div class="form-group-inner">
+                                                <div class="row">
+                                                    <div class="col-lg-3">
+                                                        <label class="login2 pull-right pull-right-pro">@ViewBag.salaryType Maaş Miktarı</label>
+                                                    </div>
+                                                    <div class="col-lg-9">
+                                                        @foreach (var item in ViewBag.personnelInfo)
+                                                        {
+                                                            <input type="text" class="form-control" name="rawSalary" value=@item.rawSalary />
+
+                                                        }
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group-inner">
+                                                <div class="row">
+                                                    <div class="col-lg-3">
+                                                        <label class="login2 pull-right pull-right-pro">Yıl</label>
+                                                    </div>
+                                                    <div class="col-lg-9">
+                                                        <input type="text" class="form-control" name="year" value="2019" disabled />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group-inner">
+                                                <div class="row">
+                                                    <div class="col-lg-3">
+                                                        <label class="login2 pull-right pull-right-pro">Engel Durumu</label>
+                                                    </div>
+                                                    <div class="col-lg-9">
+                                                        <div class="form-select-list">
+                                                            @foreach (var item in ViewBag.personnelInfo)
+                                                            {
+                                                                <select class="form-control custom-select-value" name="disability">
+                                                                    @if (item.disability == "Yok")
+                                                                    {
+                                                                        <option selected>Yok</option>
+                                                                        <option>1.Derece</option>
+                                                                        <option>2.Derece</option>
+                                                                        <option>3.Derece</option>
+                                                                    }
+
+                                                                    else if (item.disability == "1.Derece")
+                                                                    {
+                                                                        <option>Yok</option>
+                                                                        <option selected>1.Derece</option>
+                                                                        <option>2.Derece</option>
+                                                                        <option>3.Derece</option>
+                                                                    }
+
+                                                                    else if (item.disability == "2.Derece")
+                                                                    {
+                                                                        <option>Yok</option>
+                                                                        <option>1.Derece</option>
+                                                                        <option selected>2.Derece</option>
+                                                                        <option>3.Derece</option>
+                                                                    }
+
+                                                                    else if (item.disability == "3.Derece")
+                                                                    {
+                                                                        <option>Yok</option>
+                                                                        <option>1.Derece</option>
+                                                                        <option>2.Derece</option>
+                                                                        <option selected>3.Derece</option>
+                                                                    }
+                                                                </select>
+
+                                                            }
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group-inner">
+                                                <div class="row">
+                                                    <div class="col-lg-3 col-md-6 col-sm-8 col-xs-6">
+                                                        <label class="login2 pull-right pull-right-pro">
+                                                            <span class="basic-ds-n"></span>
+                                                        </label>
+                                                    </div>
+                                                    <div class="col-lg-9 col-md-6 col-sm-4 col-xs-6">
+                                                        <div class="bt-df-checkbox pull-left">
+
+                                                            @foreach (var item in ViewBag.personnelInfo)
+                                                            {
+                                                                if (item.MaritalStatus == "Evli")
+                                                                {
+                                                                    <label>
+                                                                        <input class="pull-left radio-checked" type="checkbox" name="married" checked>Evliyim
+                                                                    </label>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <label>
+                                                                        <input class="pull-left radio-checked" type="checkbox" name="married">Evliyim
+                                                                    </label>
+                                                                    <label>
+                                                                        <input class="pull-left radio-checked" type="checkbox" name="spouseWork" disabled> Eşim Çalışmıyor
+                                                                    </label>
+                                                                }
+
+                                                                if (item.WorkingStatusOfSpouse == "Çalışmıyor")
+                                                                {
+                                                                    <label>
+                                                                        <input class="pull-left radio-checked" type="checkbox" name="spouseWork" checked> Eşim Çalışmıyor
+                                                                    </label>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <label>
+                                                                        <input class="pull-left radio-checked" type="checkbox" name="spouseWork" > Eşim Çalışmıyor
+                                                                    </label>
+                                                                }
+
+                                                                if (item.IsRetired)
+                                                                {
+                                                                    <label>
+                                                                        <input class="pull-left radio-checked" type="checkbox" name="retired" checked> Emekliyim
+                                                                    </label>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <label>
+                                                                        <input class="pull-left radio-checked" type="checkbox" name="retired"> Emekliyim
+                                                                    </label>
+                                                                }
+                                                            }
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group-inner">
+                                                <div class="row">
+                                                    <div class="col-lg-3">
+                                                        <label class="login2 pull-right pull-right-pro">Çocuk Sayısı</label>
+                                                    </div>
+                                                    <div class="col-lg-9">
+                                                        @foreach (var item in ViewBag.personnelInfo)
+                                                        {
+                                                            <input type="number" class="form-control" name="numberOfChildren" value=@item.numberOfChildren/>
+                                                        }
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }*@
+                                        @*Kullanıcı girişi yapılmamışsa*@
+                                        @*else
+                                        {*@
+                                        <div class="form-group-inner">
+                                            <div class="row">
+                                                <div class="col-lg-3">
+                                                    <label class="login2 pull-right pull-right-pro">@ViewBag.salaryType Maaş Miktarı</label>
+                                                </div>
+                                                <div class="col-lg-9">
+                                                    <input type="text" class="form-control" name="rawSalary" />
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group-inner">
+                                            <div class="row">
+                                                <div class="col-lg-3">
+                                                    <label class="login2 pull-right pull-right-pro">Yıl</label>
+                                                </div>
+                                                <div class="col-lg-9">
+                                                    <input type="text" class="form-control" name="year" value="2019" disabled />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group-inner">
+                                            <div class="row">
+                                                <div class="col-lg-3">
+                                                    <label class="login2 pull-right pull-right-pro">Engel Durumu</label>
+                                                </div>
+                                                <div class="col-lg-9">
+                                                    <div class="form-select-list">
+                                                        <select class="form-control custom-select-value" name="disability">
+                                                            <option>Yok</option>
+                                                            <option>1.Derece</option>
+                                                            <option>2.Derece</option>
+                                                            <option>3.Derece</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group-inner">
+                                            <div class="row">
+                                                <div class="col-lg-3 col-md-6 col-sm-8 col-xs-6">
+                                                    <label class="login2 pull-right pull-right-pro">
+                                                        <span class="basic-ds-n"></span>
+                                                    </label>
+                                                </div>
+                                                <div class="col-lg-9 col-md-6 col-sm-4 col-xs-6">
+                                                    <div class="bt-df-checkbox pull-left">
+                                                        <label>
+                                                            <input class="pull-left radio-checked" type="checkbox" name="married"> Evliyim
+                                                        </label>
+                                                        <label>
+                                                            <input class="pull-left radio-checked" type="checkbox" name="spouseWork"> Eşim Çalışmıyor
+                                                        </label>
+                                                        <label>
+                                                            <input class="pull-left radio-checked" type="checkbox" name="retired"> Emekliyim
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group-inner">
+                                            <div class="row">
+                                                <div class="col-lg-3">
+                                                    <label class="login2 pull-right pull-right-pro">Çocuk Sayısı</label>
+                                                </div>
+                                                <div class="col-lg-9">
+                                                    <input type="number" class="form-control" name="numberOfChildren" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group-inner">
+                                            <div class="login-btn-inner">
+                                                <div class="row">
+                                                    <div class="col-lg-3"></div>
+                                                    <div class="col-lg-9">
+                                                        <div>
+                                                            @{
+                                                                string str1 = @ViewBag.salaryType;
+                                                                <input type="hidden" name="hiddenBag" value=@str1 />
+                                                            }
+                                                        </div>
+                                                        <div class="login-horizental cancel-wp pull-left">
+                                                            @if (ViewBag.salaryType == "Brüt")
+                                                            {
+                                                                <button class="btn btn-sm btn-primary login-submit-cs" type="submit">Hesapla</button>
+                                                            }
+                                                            else
+                                                            {
+                                                                <button class="btn btn-sm btn-primary login-submit-cs" type="submit">Hesapla</button>
+                                                            }
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                                                @*}*@
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+

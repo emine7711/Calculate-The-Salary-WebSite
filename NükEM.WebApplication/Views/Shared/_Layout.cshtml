@@ -1,0 +1,216 @@
+﻿
+@{
+    Layout = null;
+}
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Maaş Hesaplama</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- favicon
+        ============================================ -->
+    <link rel="shortcut icon" type="image/x-icon" href="/Content/img/favicon.ico">
+    <!-- Google Fonts
+        ============================================ -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i,800" rel="stylesheet">
+    <!-- Bootstrap CSS
+        ============================================ -->
+    <link rel="stylesheet" href="/Content/css/bootstrap.min.css">
+    <!-- Bootstrap CSS
+        ============================================ -->
+    <link rel="stylesheet" href="/Content/css/font-awesome.min.css">
+    <!-- adminpro icon CSS
+        ============================================ -->
+    <link rel="stylesheet" href="/Content/css/adminpro-custon-icon.css">
+    <!-- meanmenu icon CSS
+        ============================================ -->
+    <link rel="stylesheet" href="/Content/css/meanmenu.min.css">
+    <!-- mCustomScrollbar CSS
+        ============================================ -->
+    <link rel="stylesheet" href="/Content/css/jquery.mCustomScrollbar.min.css">
+    <!-- animate CSS
+        ============================================ -->
+    <link rel="stylesheet" href="/Content/css/animate.css">
+    <!-- normalize CSS
+        ============================================ -->
+    <link rel="stylesheet" href="/Content/css/normalize.css">
+    <!-- tab CSS
+        ============================================ -->
+    <link rel="stylesheet" href="/Content/css/tab-menus.css">
+    <!-- tabs CSS
+        ============================================ -->
+    <link rel="stylesheet" href="/Content/css/tabs.css">
+    <!-- style CSS
+        ============================================ -->
+    <link rel="stylesheet" href="/Content/style.css">
+    <!-- responsive CSS
+        ============================================ -->
+    <link rel="stylesheet" href="/Content/css/responsive.css">
+
+    <link rel="stylesheet" href="~/Content/css/mycss/MyStyle.css">
+    <!-- modernizr JS
+        ============================================ -->
+    <script src="/Content/js/vendor/modernizr-2.8.3.min.js"></script>
+    @RenderSection("head", false)
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+        }
+
+        .bg { /* The image used */
+            background-image: url("../../Content/img/accounting-black-budget-53621.jpg");
+            background-attachment: fixed;
+            height: 1000px;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    </style>
+</head>
+
+<body style="overflow-x: hidden">
+    <!--[if lt IE 8]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+    <!-- Header top area start-->
+    <div class="bg">
+        <div class="header-top-area" style="position: fixed; left:0; right:0">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-9 col-md-3 col-sm-6 col-xs-12">
+                        <div class="admin-logo imagelogo">
+                            <a href="/Home/Index">
+                                <img src="/Content/img/logo.png" width="156" height="44" />
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-9 col-sm-6 col-xs-12">
+                        <div class="header-right-info">
+                            <ul class="nav navbar-nav mai-top-nav header-right-menu">
+                                <li class="nav-item">
+                                    @if (User.Identity.IsAuthenticated)
+                                    {
+
+                                        <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle">
+                                            <span class="adminpro-icon adminpro-user-rounded header-riht-inf"></span>
+                                            <span class="admin-name">Hoşgeldin @User.Identity.Name</span>
+                                            <span class="author-project-icon adminpro-icon adminpro-down-arrow"></span>
+                                        </a>
+                                        <ul role="menu" class="dropdown-header-top author-log dropdown-menu animated flipInX">
+                                            <li>
+                                                <a href="#"><span class="adminpro-icon adminpro-user-rounded author-log-ic"></span>Profil</a>
+                                            </li>
+                                            <li>
+                                                <a href="/Member/MemberLogout"><span class="adminpro-icon adminpro-locked author-log-ic"></span>Çıkış Yap</a>
+                                            </li>
+                                        </ul>
+                                    }
+                                    else
+                                    {
+                                        <a href="/Member/MemberLogin" class="btn btn-danger" style="font-size:small" >Kullanıcı Girişi</a>
+                                    }
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-2 col-md-5 col-sm-0 col-xs-12"></div>
+                    <div class="col-lg-12 col-md-5 col-sm-0 col-xs-12">
+                        <div class="header-top-menu">
+                            <ul class="nav navbar-nav mai-top-nav">
+                                <li class="nav-item dropdown">
+                                    <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle">Maaş Hesaplama<span class="angle-down-topmenu"><i class="fa fa-angle-down"></i></span></a>
+                                    <div role="menu" class="dropdown-menu animated flipInX">
+                                        <a href="/Salary/SalaryView?vwFrm=Brütten Nete&slryType=Brüt" class="dropdown-item">Brütten Nete</a>
+                                        <a href="/Salary/SalaryView?vwFrm=Netten Brüte&slryType=Net" class="dropdown-item">Netten Brüte</a>
+                                    </div>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle">Tazminat Hesaplama<span class="angle-down-topmenu"><i class="fa fa-angle-down"></i></span></a>
+                                    <div role="menu" class="dropdown-menu animated flipInX">
+                                        <a href="/Recompense/CompansationView?vwFrm=Kıdem" class="dropdown-item">Kıdem Tazminatı Hesaplama</a>
+                                        <a href="/Recompense/CompansationView?vwFrm=İhbar" class="dropdown-item">İhbar Tazminatı Hesaplama</a>
+                                    </div>
+                                </li>
+                                @if (User.Identity.IsAuthenticated && (User.IsInRole("admin") || User.IsInRole("ik personeli")))
+                                {
+                                    <li class="nav-item">
+                                        <a href="~/Personnel/PersonnelList" class="nav-link">Personeller</a>
+                                    </li>
+                                  
+                                    if (User.Identity.IsAuthenticated && User.IsInRole("admin"))
+                                    {
+                                        <li class="nav-item">
+                                            <a href="/User/Index" class="nav-link">Kullanıcılar</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="/Role/Index" class="nav-link">Roller</a>
+                                        </li>
+                                    }
+                                }
+                            </ul>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Header top area end-->
+        @RenderBody()
+        <!--
+        <div class="bg"></div>
+            -->
+        <!-- Footer Start-->
+        <div class="footer-copyright-area" style="position: fixed;  left: 0;
+   bottom: 0;
+   height:5%;
+   width: 100%;
+   /*background-color: red;
+   color: white;*/
+   text-align: center">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="footer-copy-right">
+                            <p style="font-size:10px">Copyright &#169; 2019 NükEM All rights reserved. <a href="/Home/Index">NükEM</a>.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer End-->
+    <!-- jquery
+        ============================================ -->
+    <script src="/Content/js/vendor/jquery-1.11.3.min.js"></script>
+    <!-- bootstrap JS
+        ============================================ -->
+    <script src="/Content/js/bootstrap.min.js"></script>
+    <!-- meanmenu JS
+        ============================================ -->
+    <script src="/Content/js/jquery.meanmenu.js"></script>
+    <!-- mCustomScrollbar JS
+        ============================================ -->
+    <script src="/Content/js/jquery.mCustomScrollbar.concat.min.js"></script>
+    <!-- sticky JS
+        ============================================ -->
+    <script src="/Content/js/jquery.sticky.js"></script>
+    <!-- scrollUp JS
+        ============================================ -->
+    <script src="/Content/js/jquery.scrollUp.min.js"></script>
+    <!-- main JS
+        ============================================ -->
+    <script src="/Content/js/main.js"></script>
+    @RenderSection("scripts", false)
+</body>
+
+</html>

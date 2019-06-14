@@ -1,0 +1,83 @@
+﻿
+@{
+    ViewBag.Title = "SalaryTable";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using NükEM.Repository
+
+@model List<Months>
+
+<div class="data-table-area mg-b-40" >
+    <div class="container">
+        <div class="row">
+                <div class="sparkline13-list shadow-reset" style="margin-top:130px">
+                    <div class="sparkline13-hd">
+                        <div class="main-sparkline13-hd">
+                            <h1>Maaş <span class="table-project-n">Sonuç</span> Tablosu</h1>
+                            <div class="sparkline13-outline-icon">
+                                <span class="sparkline13-collapse-link"><i class="fa fa-chevron-up"></i></span>
+                                <span><i class="fa fa-wrench"></i></span>
+                                <span class="sparkline13-collapse-close"><i class="fa fa-times"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sparkline13-graph">
+                        <div class="datatable-dashv1-list custom-datatable-overright">
+                            <table id="table" data-toggle="table" data-pagination="true" data-search="true" data-show-columns="true" data-show-pagination-switch="true" data-show-refresh="true" data-key-events="true" data-show-toggle="true" data-resizable="true" data-cookie="true" data-cookie-id-table="saveId" data-show-export="true" data-click-to-select="true" data-toolbar="#toolbar" class="table table-hover JColResizer">
+                                <thead>
+                                    <tr>
+                                        <th style="width:3%;" data-field="state" data-checkbox="true"></th>
+                                        <th style="width: 8.5%;" data-field="name" tabindex="0"><div class="th-inner ">Aylar</div><div class="fht-cell"></div></th>
+                                        <th style="width: 8.5%;" data-field="name" tabindex="0"><div class="th-inner ">Brüt</div><div class="fht-cell"></div></th>
+                                        <th style="width: 8.5%;" data-field="name" tabindex="0"><div class="th-inner ">İşçi SGK Payı</div><div class="fht-cell"></div></th>
+                                        <th style="width: 8.5%;" data-field="name" tabindex="0"><div class="th-inner ">Aylık Gelir Vergisi</div><div class="fht-cell"></div></th>
+                                        <th style="width: 10%;" data-field="name" tabindex="0"><div class="th-inner ">Damga Vergisi</div><div class="fht-cell"></div></th>
+                                        <th style="width: 10%;" data-field="name" tabindex="0"><div class="th-inner ">Kümülatif Gelir Vergisi Matrahı</div><div class="fht-cell"></div></th>
+                                        <th style="width: 8.5%;" data-field="name" tabindex="0"><div class="th-inner ">AGİ</div><div class="fht-cell"></div></th>
+                                        <th style="width: 8.5%;" data-field="name" tabindex="0"><div class="th-inner ">Net(AGİ'siz)</div><div class="fht-cell"></div></th>
+                                        </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in @ViewBag.resultList)
+                                    {
+                                        int indexOfItem = @ViewBag.resultList.IndexOf(item) + 1;
+                                        Months nameOfMonth = (Months)indexOfItem;
+                                    <tr>
+                                        @if (ViewBag.hiddenBag == "Brüt")
+                                        {
+                                            <td> </td>
+                                            <td>@nameOfMonth</td>
+                                            <td>@item.rawSalary</td>
+                                            <td>@item.insurance</td>
+                                            <td>@item.mita</td>
+                                            <td>@item.stampTax</td>
+                                            <td>@item.cita</td>
+                                            <td>@item.minLivingAllow</td>
+                                            <td>@item.resultSalary</td>
+                                        }
+                                        else
+                                        {
+                                            <td> </td>
+                                            <td>@nameOfMonth</td>
+                                            <td>@item.resultSalary</td>
+                                            <td>@item.insurance</td>
+                                            <td>@item.mita</td>
+                                            <td>@item.stampTax</td>
+                                            <td>@item.cita</td>
+                                            <td>@item.minLivingAllow</td>
+                                            <td>@item.rawSalary</td>
+                                        }
+
+                                    </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
